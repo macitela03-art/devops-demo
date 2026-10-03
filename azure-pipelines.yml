@@ -1,0 +1,21 @@
+# Same pipeline for Azure DevOps (use this if you demonstrate with Azure Pipelines)
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.12'
+    displayName: 'Set up Python'
+
+  - script: pip install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  - script: pytest -v
+    displayName: 'Run tests'
+
+  - script: docker build -t devops-demo:$(Build.BuildId) .
+    displayName: 'Build Docker image'
