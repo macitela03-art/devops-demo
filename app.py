@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return (
-        "<h1>DevOps Demo App V2</h1>"
+        "<h1>My App</h1>"
         "<p>Built with Flask, tested and packaged automatically by a CI/CD pipeline.</p>"
     )
 
